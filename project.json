@@ -1,0 +1,32 @@
+{
+  "id": "chatgpt-slide-seed",
+  "title": "Slide Seed",
+  "number": 10,
+  "port": 3110,
+  "symbol": "S",
+  "nav": "幻灯片工作室",
+  "eyebrow": "ONE IDEA. A STORY TO SHARE.",
+  "headline": "从一个主题，到一场表达。",
+  "description": "把想法整理成有条理的幻灯片。编辑每一页的要点与讲稿，再把完整演示带走。",
+  "features": [
+    "主题与背景生成 3–8 页结构化幻灯片",
+    "逐页编辑、添加、删除与排序，最多 12 页",
+    "三种主题与键盘翻页播放",
+    "导出可独立打开的 HTML、Markdown 大纲与 JSON 备份"
+  ],
+  "steps": [
+    "输入主题、受众和背景资料，选择 3–8 页后生成。",
+    "在左侧选择页面，编辑标题、要点与讲稿；可添加、删除或调整顺序。",
+    "选择配色，点击播放，用左右方向键翻页，Esc 退出。",
+    "保存本地草稿，或导出 HTML 演示、Markdown 大纲和 JSON 备份。导出的 HTML 无需服务器。"
+  ],
+  "source": {
+    "name": "presenton/presenton",
+    "url": "https://github.com/presenton/presenton",
+    "stars": 10937,
+    "pushed": "2026-10-02",
+    "license": "Apache-2.0"
+  },
+  "scope": "复刻 Presenton 的主题 → 幻灯片 → 编辑导出核心流程。本轻量版本使用文字幻灯片与三套配色，不提供 PPTX、图片生成、图表、模板市场或办公软件导入。导出格式为独立 HTML、Markdown 与本应用 JSON。生成内容应由演讲者核实，演示模式只生成明确标注的结构示例。",
+  "storage": "点击保存后，当前幻灯片与配色保存在浏览器本地，可导出 JSON 备份并重新导入。"
+}

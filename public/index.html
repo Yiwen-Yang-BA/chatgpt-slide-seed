@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="把想法整理成有条理的幻灯片。编辑每一页的要点与讲稿，再把完整演示带走。"
+    />
+    <title>Slide Seed · AI 小工具</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand"><span class="logo">S</span>Slide Seed</div>
+        <div class="side-intro">
+          <div class="eyebrow">PERSONAL AI WORKSPACE</div>
+          <div class="nav-item">幻灯片工作室</div>
+        </div>
+        <div class="side-note">
+          把一个想法，变成可以使用的结果。<br />轻量、专注，按你的节奏。
+        </div>
+        <div class="side-bottom">
+          <div class="eyebrow">CONNECTION</div>
+          <label
+            ><span class="sr-only" hidden>运行模式</span
+            ><select id="mode" aria-label="运行模式"></select
+          ></label>
+        </div>
+        <div class="side-footer">
+          INDEPENDENT EDITION / 10<br />Built for a little more clarity.
+        </div>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <span class="crumb">我的工作台 &nbsp; / &nbsp; 幻灯片工作室</span
+          ><span class="top-meta"
+            ><i class="dot"></i><span id="connection">正在连接…</span></span
+          >
+        </header>
+        <section class="hero">
+          <div class="eyebrow">ONE IDEA. A STORY TO SHARE.</div>
+          <h1>从一个主题，到一场表达。</h1>
+          <p class="description">
+            把想法整理成有条理的幻灯片。编辑每一页的要点与讲稿，再把完整演示带走。
+          </p>
+        </section>
+        <section class="panel brief-panel">
+          <div class="panel-head">
+            <h2>从主题开始</h2>
+            <button id="sample" class="small">载入示例</button>
+          </div>
+          <form id="deck-form">
+            <div class="brief-grid">
+              <label
+                >演讲主题<input
+                  id="topic"
+                  required
+                  maxlength="160"
+                  placeholder="例如：如何让团队知识更易查找" /></label
+              ><label
+                >面向谁<input
+                  id="audience"
+                  required
+                  maxlength="120"
+                  value="产品与研发团队" /></label
+              ><label
+                >页数<select id="count">
+                  <option>3</option>
+                  <option>4</option>
+                  <option selected>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                </select></label
+              >
+            </div>
+            <label
+              >背景资料与希望传达的内容<textarea
+                id="brief"
+                rows="3"
+                maxlength="6000"
+                placeholder="写下主要观点、已知事实、案例或希望听众采取的行动…"
+              ></textarea>
+            </label>
+            <div class="toolbar">
+              <button id="generate" class="primary">生成幻灯片 ↗</button
+              ><span class="hint"
+                >生成新内容会替换当前草稿，可先保存或导出。</span
+              >
+            </div>
+          </form>
+        </section>
+        <section id="studio" class="panel studio">
+          <div class="panel-head">
+            <h2>演示工作台</h2>
+            <div class="toolbar">
+              <select id="theme" aria-label="演示配色">
+                <option value="sage">苔绿 · 清新</option>
+                <option value="ink">墨蓝 · 深色</option>
+                <option value="clay">陶土 · 温暖</option></select
+              ><button id="play" class="primary" disabled>播放 ▷</button>
+            </div>
+          </div>
+          <div id="meta" class="meta"></div>
+          <div id="warnings" class="hint"></div>
+          <div id="empty" class="empty">
+            <div class="symbol">▱</div>
+            <h3>你的故事，从这里展开</h3>
+            <p>生成一份草稿，或者导入之前保存的 JSON。</p>
+          </div>
+          <div id="workspace" hidden>
+            <div class="deck-meta">
+              <label>演示名称<input id="deck-title" maxlength="100" /></label
+              ><label>副标题<input id="deck-subtitle" maxlength="160" /></label>
+            </div>
+            <div class="studio-grid">
+              <aside>
+                <div id="slide-list" class="slide-list"></div>
+                <button id="add-slide" class="small">＋ 添加一页</button>
+              </aside>
+              <div>
+                <div id="preview" class="slide-preview"></div>
+                <div class="toolbar slide-actions">
+                  <span id="slide-number" class="number"></span
+                  ><button id="up" class="small">↑ 上移</button
+                  ><button id="down" class="small">↓ 下移</button
+                  ><button id="remove" class="small danger">删除此页</button>
+                </div>
+                <div class="editor-grid">
+                  <div>
+                    <label
+                      >本页标题<input id="slide-title" maxlength="100" /></label
+                    ><label
+                      >要点 · 每行一条，最多 4 条<textarea
+                        id="slide-bullets"
+                        rows="5"
+                        maxlength="650"
+                      ></textarea>
+                    </label>
+                  </div>
+                  <label
+                    >演讲备注<textarea
+                      id="slide-notes"
+                      rows="8"
+                      maxlength="800"
+                    ></textarea>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="toolbar">
+            <button id="save" class="small" disabled>保存本地草稿</button
+            ><button id="export-html" class="primary" disabled>
+              导出 HTML 演示</button
+            ><button id="export-md" class="small" disabled>导出大纲</button
+            ><button id="export-json" class="small" disabled>导出 JSON</button
+            ><label class="import-label"
+              >导入 JSON<input
+                type="file"
+                id="import"
+                accept=".json"
+                aria-label="导入幻灯片 JSON"
+            /></label>
+          </div>
+        </section>
+        <dialog id="presenter">
+          <div class="presentation-top">
+            <strong id="present-title"></strong
+            ><button id="exit" class="small">退出 · Esc</button>
+          </div>
+          <div id="present-slide"></div>
+          <div class="presentation-controls">
+            <button id="previous" class="small">← 上一页</button
+            ><span id="present-count"></span
+            ><button id="next" class="small">下一页 →</button>
+          </div>
+        </dialog>
+        <footer class="footer">
+          <span>Slide Seed · 独立轻量实现</span
+          ><span
+            >灵感来自
+            <a
+              href="https://github.com/presenton/presenton"
+              target="_blank"
+              rel="noopener noreferrer"
+              >presenton/presenton</a
+            >
+            &nbsp; / &nbsp; 10 OF 10</span
+          >
+        </footer>
+      </main>
+    </div>
+    <div id="toast" role="status" aria-live="polite" hidden></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
